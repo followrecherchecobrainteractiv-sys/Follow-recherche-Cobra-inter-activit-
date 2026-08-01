@@ -1,0 +1,6 @@
+{
+  "name": "Follow Recherche Cobra Inter Activité",
+  "description": "Structure créative de premier plan spécialisée dans le développement de jeux vidéo, la programmation avancée, la production musicale et la création de films et cinématiques.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
