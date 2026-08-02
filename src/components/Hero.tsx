@@ -35,10 +35,20 @@ export const Hero: React.FC<HeroProps> = ({
           <div className="lg:col-span-7 space-y-8 text-center lg:text-left">
             
             {/* Top Badge */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/5 border border-emerald-500/30 text-emerald-300 text-xs font-semibold tracking-wider uppercase backdrop-blur-md shadow-[0_0_20px_rgba(16,185,129,0.15)]">
-              <Shield className="w-4 h-4 text-emerald-400" />
-              <span>{t.heroBadge}</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3">
+              <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/5 border border-emerald-500/30 text-emerald-300 text-xs font-semibold tracking-wider uppercase backdrop-blur-md shadow-[0_0_20px_rgba(16,185,129,0.15)]">
+                <Shield className="w-4 h-4 text-emerald-400" />
+                <span>{t.heroBadge}</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+              </div>
+
+              <a
+                href="#anniversary-promo"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-amber-500/20 via-yellow-500/20 to-amber-600/20 border border-amber-500/40 text-amber-300 text-xs font-bold tracking-wider uppercase backdrop-blur-md shadow-[0_0_20px_rgba(245,158,11,0.2)] hover:border-amber-400 transition-all"
+              >
+                <Play className="w-3.5 h-3.5 text-amber-400 fill-current" />
+                <span>{currentLang === 'ar' ? 'فيديو الذكرى التأسيسية' : 'Film Anniversaire Officiel'}</span>
+              </a>
             </div>
 
             {/* Main Headline */}

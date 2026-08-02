@@ -8,7 +8,7 @@ dotenv.config();
 
 async function startServer() {
   const app = express();
-  const PORT = process.env.PORT ? parseInt(process.env.PORT) : 3000;
+  const PORT = 3000;
 
   app.use(express.json());
 
@@ -19,6 +19,12 @@ async function startServer() {
       company: 'Follow Recherche Cobra Inter Activité',
       timestamp: new Date().toISOString()
     });
+  });
+
+  // Google Search Console verification endpoint
+  app.get('/google1c5349841a277fbe.html', (req, res) => {
+    res.setHeader('Content-Type', 'text/html');
+    res.send('google-site-verification: google1c5349841a277fbe.html');
   });
 
   // AI Architect & Proposal Generator Endpoint

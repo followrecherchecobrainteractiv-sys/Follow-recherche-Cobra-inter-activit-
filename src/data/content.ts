@@ -11,6 +11,7 @@ export const FOUNDER_NAME = "Rayan Ouarab";
 export const TRANSLATIONS: Record<Language, Record<string, string>> = {
   fr: {
     navHome: "Accueil",
+    navAnniversary: "Film Anniversaire",
     navPillars: "Nos 4 Pôles",
     navAiArchitect: "IA Studio Architect",
     navPortfolio: "Réalisations",
@@ -48,6 +49,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
   },
   ar: {
     navHome: "الرئيسية",
+    navAnniversary: "فيديو الذكرى التأسيسية",
     navPillars: "مجالاتنا الأربعة",
     navAiArchitect: "مهندس الذكاء الاصطناعي",
     navPortfolio: "أعمالنا والابتكارات",
@@ -85,6 +87,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
   },
   en: {
     navHome: "Home",
+    navAnniversary: "Anniversary Film",
     navPillars: "4 Pillars",
     navAiArchitect: "AI Studio Architect",
     navPortfolio: "Showcase",

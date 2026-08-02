@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Language, PillarId, AiProposalData } from './types';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
+import { AnniversaryPromoVideoSection } from './components/AnniversaryPromoVideoSection';
 import { PillarsSection } from './components/PillarsSection';
 import { AiConsultantSection } from './components/AiConsultantSection';
 import { PortfolioSection } from './components/PortfolioSection';
@@ -11,7 +12,7 @@ import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 
 export default function App() {
-  const [currentLang, setCurrentLang] = useState<Language>('fr');
+  const [currentLang, setCurrentLang] = useState<Language>('ar');
   const [selectedPillarForQuote, setSelectedPillarForQuote] = useState<PillarId | undefined>(undefined);
   const [activeTrackTitle, setActiveTrackTitle] = useState<string | undefined>(undefined);
 
@@ -60,6 +61,11 @@ export default function App() {
           currentLang={currentLang}
           onOpenAiArchitect={() => scrollToSection('ai-architect')}
           onOpenQuote={() => scrollToSection('calculator')}
+        />
+
+        {/* Official Founding Anniversary Promotional Video Showcase */}
+        <AnniversaryPromoVideoSection
+          currentLang={currentLang}
         />
 
         {/* 4 Pillars of Excellence */}

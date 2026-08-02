@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Language } from '../types';
 import { TRANSLATIONS, COMPANY_NAME } from '../data/content';
-import { Shield, Sparkles, Globe, Menu, X, Cpu, Music, Gamepad2, Video, Calculator, Send } from 'lucide-react';
+import { Shield, Sparkles, Globe, Menu, X, Cpu, Music, Gamepad2, Video, Calculator, Send, Crown, Film } from 'lucide-react';
 
 interface HeaderProps {
   currentLang: Language;
@@ -21,6 +21,7 @@ export const Header: React.FC<HeaderProps> = ({
   const isRtl = currentLang === 'ar';
 
   const navLinks = [
+    { href: "#anniversary-promo", label: t.navAnniversary, isHighlight: true },
     { href: "#pillars", label: t.navPillars },
     { href: "#ai-architect", label: t.navAiArchitect },
     { href: "#portfolio", label: t.navPortfolio },
@@ -50,15 +51,22 @@ export const Header: React.FC<HeaderProps> = ({
         </a>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-6">
+        <nav className="hidden lg:flex items-center gap-5">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-slate-300 hover:text-emerald-400 transition-colors py-1 relative group"
+              className={`text-sm font-medium transition-colors py-1 relative group flex items-center gap-1.5 ${
+                link.isHighlight
+                  ? 'text-amber-300 font-bold hover:text-amber-200 bg-amber-500/10 px-3 py-1 rounded-xl border border-amber-500/30'
+                  : 'text-slate-300 hover:text-emerald-400'
+              }`}
             >
-              {link.label}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-emerald-500 to-teal-300 group-hover:w-full transition-all duration-300" />
+              {link.isHighlight && <Crown className="w-3.5 h-3.5 text-amber-400 animate-pulse" />}
+              <span>{link.label}</span>
+              {!link.isHighlight && (
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-emerald-500 to-teal-300 group-hover:w-full transition-all duration-300" />
+              )}
             </a>
           ))}
         </nav>
