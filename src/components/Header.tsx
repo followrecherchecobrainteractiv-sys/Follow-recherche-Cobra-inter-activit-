@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Language } from '../types';
 import { TRANSLATIONS, COMPANY_NAME } from '../data/content';
-import { Shield, Sparkles, Globe, Menu, X, Cpu, Music, Gamepad2, Video, Calculator, Send, Crown, Film } from 'lucide-react';
+import { Shield, Sparkles, Globe, Menu, X, Cpu, Music, Gamepad2, Video, Calculator, Send, Crown, Film, DollarSign, Wallet } from 'lucide-react';
 
 interface HeaderProps {
   currentLang: Language;
   onLanguageChange: (lang: Language) => void;
   onOpenQuote: () => void;
   onOpenAiArchitect: () => void;
+  onOpenMonetization?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -15,6 +16,7 @@ export const Header: React.FC<HeaderProps> = ({
   onLanguageChange,
   onOpenQuote,
   onOpenAiArchitect,
+  onOpenMonetization,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const t = TRANSLATIONS[currentLang];
@@ -73,6 +75,18 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Action Controls & Language Selector */}
         <div className="hidden sm:flex items-center gap-3">
+          {/* RedotPay Ads & Monetization Button */}
+          {onOpenMonetization && (
+            <button
+              onClick={onOpenMonetization}
+              className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-bold transition-all shadow-md hover:shadow-amber-500/20"
+              title="RedotPay Ads & Revenue Settings"
+            >
+              <DollarSign className="w-3.5 h-3.5 text-emerald-400" />
+              <span>RedotPay 💰</span>
+            </button>
+          )}
+
           {/* AI Architect Quick Launch Button */}
           <button
             onClick={onOpenAiArchitect}
@@ -162,6 +176,19 @@ export const Header: React.FC<HeaderProps> = ({
           </nav>
           
           <div className="pt-2 border-t border-white/10 flex flex-col gap-2">
+            {onOpenMonetization && (
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenMonetization();
+                }}
+                className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 text-sm font-bold"
+              >
+                <DollarSign className="w-4 h-4 text-emerald-400" />
+                <span>إدارة الأرباح والإعلانات (RedotPay)</span>
+              </button>
+            )}
+
             <button
               onClick={() => {
                 setMobileMenuOpen(false);

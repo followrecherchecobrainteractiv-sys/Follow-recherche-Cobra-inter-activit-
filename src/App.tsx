@@ -10,11 +10,14 @@ import { AudioPlayerBar } from './components/AudioPlayerBar';
 import { QuoteCalculator } from './components/QuoteCalculator';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
+import { AdBanner } from './components/AdBanner';
+import { AdMonetizationModal } from './components/AdMonetizationModal';
 
 export default function App() {
   const [currentLang, setCurrentLang] = useState<Language>('ar');
   const [selectedPillarForQuote, setSelectedPillarForQuote] = useState<PillarId | undefined>(undefined);
   const [activeTrackTitle, setActiveTrackTitle] = useState<string | undefined>(undefined);
+  const [isAdModalOpen, setIsAdModalOpen] = useState(false);
 
   // Set document direction for RTL when Arabic is selected
   useEffect(() => {
@@ -52,6 +55,7 @@ export default function App() {
         onLanguageChange={setCurrentLang}
         onOpenQuote={() => scrollToSection('calculator')}
         onOpenAiArchitect={() => scrollToSection('ai-architect')}
+        onOpenMonetization={() => setIsAdModalOpen(true)}
       />
 
       {/* Main Content Sections */}
@@ -63,6 +67,13 @@ export default function App() {
           onOpenQuote={() => scrollToSection('calculator')}
         />
 
+        {/* Top Monetization Leaderboard Ad Banner */}
+        <AdBanner
+          currentLang={currentLang}
+          slot="leaderboard"
+          onOpenSettings={() => setIsAdModalOpen(true)}
+        />
+
         {/* Official Founding Anniversary Promotional Video Showcase */}
         <AnniversaryPromoVideoSection
           currentLang={currentLang}
@@ -72,6 +83,13 @@ export default function App() {
         <PillarsSection
           currentLang={currentLang}
           onSelectPillarForQuote={handleSelectPillarForQuote}
+        />
+
+        {/* Inline Content Ad Banner */}
+        <AdBanner
+          currentLang={currentLang}
+          slot="inline"
+          onOpenSettings={() => setIsAdModalOpen(true)}
         />
 
         {/* Cobra AI Studio Architect */}
@@ -104,9 +122,24 @@ export default function App() {
         />
       </main>
 
+      {/* Sticky Bottom Ad Banner */}
+      <AdBanner
+        currentLang={currentLang}
+        slot="footer-sticky"
+        onOpenSettings={() => setIsAdModalOpen(true)}
+      />
+
+      {/* RedotPay & Ad Monetization Settings Modal */}
+      <AdMonetizationModal
+        currentLang={currentLang}
+        isOpen={isAdModalOpen}
+        onClose={() => setIsAdModalOpen(false)}
+      />
+
       {/* Footer */}
       <Footer currentLang={currentLang} />
 
     </div>
   );
 }
+

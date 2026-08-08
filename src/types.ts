@@ -78,3 +78,24 @@ export interface QuoteFormData {
   phone: string;
   description: string;
 }
+
+export interface AdSettings {
+  enabled: boolean;
+  network: 'adsense' | 'adsterra' | 'monetag' | 'custom';
+  adsensePublisherId?: string;
+  customHeaderScript?: string;
+  customBannerScript?: string;
+  redotPayId: string;
+  redotPayWalletUsdt: string;
+  autoPayout: boolean;
+  minPayoutThreshold: number;
+}
+
+export interface AdStats {
+  impressions: number;
+  clicks: number;
+  ctr: number;
+  ecpm: number;
+  estimatedRevenueUsdt: number;
+  lastPayoutDate?: string;
+}
