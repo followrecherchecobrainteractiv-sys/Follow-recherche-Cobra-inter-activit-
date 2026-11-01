@@ -3,6 +3,7 @@ import { Language, PillarId, AiProposalData } from './types';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { AnniversaryPromoVideoSection } from './components/AnniversaryPromoVideoSection';
+import { RndTimizartOfferSection } from './components/RndTimizartOfferSection';
 import { PillarsSection } from './components/PillarsSection';
 import { AiConsultantSection } from './components/AiConsultantSection';
 import { PortfolioSection } from './components/PortfolioSection';
@@ -12,12 +13,27 @@ import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { AdBanner } from './components/AdBanner';
 import { AdMonetizationModal } from './components/AdMonetizationModal';
+import { AdminControlDashboard } from './components/AdminControlDashboard';
 
 export default function App() {
   const [currentLang, setCurrentLang] = useState<Language>('ar');
   const [selectedPillarForQuote, setSelectedPillarForQuote] = useState<PillarId | undefined>(undefined);
   const [activeTrackTitle, setActiveTrackTitle] = useState<string | undefined>(undefined);
   const [isAdModalOpen, setIsAdModalOpen] = useState(false);
+  const [isAdminDashboardOpen, setIsAdminDashboardOpen] = useState(false);
+
+  // Auto detect if URL has #admin or ?admin=true
+  useEffect(() => {
+    const checkAdmin = () => {
+      if (window.location.hash === '#admin' || window.location.search.includes('admin=true')) {
+        setIsAdminDashboardOpen(true);
+      }
+    };
+
+    checkAdmin();
+    window.addEventListener('hashchange', checkAdmin);
+    return () => window.removeEventListener('hashchange', checkAdmin);
+  }, []);
 
   // Set document direction for RTL when Arabic is selected
   useEffect(() => {
@@ -71,11 +87,16 @@ export default function App() {
         <AdBanner
           currentLang={currentLang}
           slot="leaderboard"
-          onOpenSettings={() => setIsAdModalOpen(true)}
+          onOpenSettings={() => setIsAdminDashboardOpen(true)}
         />
 
         {/* Official Founding Anniversary Promotional Video Showcase */}
         <AnniversaryPromoVideoSection
+          currentLang={currentLang}
+        />
+
+        {/* Exclusive Initiative & Offer for RND Militants - Timizart Municipality */}
+        <RndTimizartOfferSection
           currentLang={currentLang}
         />
 
@@ -89,7 +110,7 @@ export default function App() {
         <AdBanner
           currentLang={currentLang}
           slot="inline"
-          onOpenSettings={() => setIsAdModalOpen(true)}
+          onOpenSettings={() => setIsAdminDashboardOpen(true)}
         />
 
         {/* Cobra AI Studio Architect */}
@@ -126,7 +147,7 @@ export default function App() {
       <AdBanner
         currentLang={currentLang}
         slot="footer-sticky"
-        onOpenSettings={() => setIsAdModalOpen(true)}
+        onOpenSettings={() => setIsAdminDashboardOpen(true)}
       />
 
       {/* RedotPay & Ad Monetization Settings Modal */}
@@ -136,8 +157,18 @@ export default function App() {
         onClose={() => setIsAdModalOpen(false)}
       />
 
+      {/* Owner Control Dashboard (Rayan Ouarab Admin Panel) */}
+      <AdminControlDashboard
+        currentLang={currentLang}
+        isOpen={isAdminDashboardOpen}
+        onClose={() => setIsAdminDashboardOpen(false)}
+      />
+
       {/* Footer */}
-      <Footer currentLang={currentLang} />
+      <Footer
+        currentLang={currentLang}
+        onOpenMonetization={() => setIsAdminDashboardOpen(true)}
+      />
 
     </div>
   );

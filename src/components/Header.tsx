@@ -23,6 +23,11 @@ export const Header: React.FC<HeaderProps> = ({
   const isRtl = currentLang === 'ar';
 
   const navLinks = [
+    { 
+      href: "#rnd-timizart-offer", 
+      label: t.navRndOffer || (currentLang === 'ar' ? '⭐ عرض مناضلي RND تيميزار' : '⭐ Offre RND Timizart'), 
+      isSpecialOffer: true 
+    },
     { href: "#anniversary-promo", label: t.navAnniversary, isHighlight: true },
     { href: "#pillars", label: t.navPillars },
     { href: "#ai-architect", label: t.navAiArchitect },
@@ -53,20 +58,28 @@ export const Header: React.FC<HeaderProps> = ({
         </a>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-5">
+        <nav className="hidden lg:flex items-center gap-4">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className={`text-sm font-medium transition-colors py-1 relative group flex items-center gap-1.5 ${
-                link.isHighlight
-                  ? 'text-amber-300 font-bold hover:text-amber-200 bg-amber-500/10 px-3 py-1 rounded-xl border border-amber-500/30'
+              className={`text-sm font-medium transition-all py-1.5 px-2.5 rounded-xl relative group flex items-center gap-1.5 ${
+                link.isSpecialOffer
+                  ? 'text-emerald-300 font-bold bg-gradient-to-r from-emerald-950/90 to-teal-950/80 border border-emerald-400/50 shadow-[0_0_15px_rgba(16,185,129,0.25)] hover:shadow-[0_0_25px_rgba(16,185,129,0.45)] hover:border-emerald-300 scale-[1.02]'
+                  : link.isHighlight
+                  ? 'text-amber-300 font-bold hover:text-amber-200 bg-amber-500/10 border border-amber-500/30'
                   : 'text-slate-300 hover:text-emerald-400'
               }`}
             >
+              {link.isSpecialOffer && (
+                <span className="flex h-2 w-2 relative -mr-0.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+                </span>
+              )}
               {link.isHighlight && <Crown className="w-3.5 h-3.5 text-amber-400 animate-pulse" />}
               <span>{link.label}</span>
-              {!link.isHighlight && (
+              {!link.isHighlight && !link.isSpecialOffer && (
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-emerald-500 to-teal-300 group-hover:w-full transition-all duration-300" />
               )}
             </a>
@@ -75,18 +88,6 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Action Controls & Language Selector */}
         <div className="hidden sm:flex items-center gap-3">
-          {/* RedotPay Ads & Monetization Button */}
-          {onOpenMonetization && (
-            <button
-              onClick={onOpenMonetization}
-              className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-bold transition-all shadow-md hover:shadow-amber-500/20"
-              title="RedotPay Ads & Revenue Settings"
-            >
-              <DollarSign className="w-3.5 h-3.5 text-emerald-400" />
-              <span>RedotPay 💰</span>
-            </button>
-          )}
-
           {/* AI Architect Quick Launch Button */}
           <button
             onClick={onOpenAiArchitect}
@@ -168,27 +169,25 @@ export const Header: React.FC<HeaderProps> = ({
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-2 rounded-xl text-sm font-medium text-slate-200 hover:bg-emerald-500/10 hover:text-emerald-400 transition-colors"
+                className={`px-3.5 py-2.5 rounded-xl text-sm font-medium transition-colors flex items-center justify-between ${
+                  link.isSpecialOffer
+                    ? 'bg-gradient-to-r from-emerald-950 to-teal-950 text-emerald-300 font-bold border border-emerald-500/40 shadow-lg shadow-emerald-500/10'
+                    : link.isHighlight
+                    ? 'text-amber-300 bg-amber-500/10 font-bold border border-amber-500/20'
+                    : 'text-slate-200 hover:bg-emerald-500/10 hover:text-emerald-400'
+                }`}
               >
-                {link.label}
+                <span>{link.label}</span>
+                {link.isSpecialOffer && (
+                  <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                    تيميزار
+                  </span>
+                )}
               </a>
             ))}
           </nav>
           
           <div className="pt-2 border-t border-white/10 flex flex-col gap-2">
-            {onOpenMonetization && (
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenMonetization();
-                }}
-                className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 text-sm font-bold"
-              >
-                <DollarSign className="w-4 h-4 text-emerald-400" />
-                <span>إدارة الأرباح والإعلانات (RedotPay)</span>
-              </button>
-            )}
-
             <button
               onClick={() => {
                 setMobileMenuOpen(false);

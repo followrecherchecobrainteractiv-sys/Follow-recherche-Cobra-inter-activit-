@@ -46,19 +46,26 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ currentLang }) =
           {/* Left Column: Founder & Studio Profile */}
           <div className="lg:col-span-5 space-y-6">
             
-            <div className="rounded-3xl bg-white/5 border border-white/10 p-6 sm:p-8 space-y-6 shadow-xl relative overflow-hidden backdrop-blur-xl">
+            <div className="rounded-3xl bg-white/5 border border-emerald-500/30 p-6 sm:p-8 space-y-6 shadow-xl relative overflow-hidden backdrop-blur-xl">
               <div className="flex items-center gap-4">
-                <div className="w-16 h-16 rounded-2xl overflow-hidden border-2 border-emerald-400 shrink-0 shadow-lg shadow-emerald-500/20">
+                <div className="relative w-20 h-20 rounded-2xl overflow-hidden border-2 border-emerald-400 shrink-0 shadow-lg shadow-emerald-500/30">
                   <img
                     src={founder.avatar}
                     alt={founder.name}
-                    referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-top"
                   />
+                  <div className="absolute bottom-0 inset-x-0 bg-slate-950/80 text-[9px] text-center text-emerald-300 font-mono py-0.5">
+                    DIR
+                  </div>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-slate-100">{founder.name}</h3>
-                  <div className="text-emerald-400 font-mono text-xs font-bold uppercase mt-0.5">
+                  <h3 className="text-xl font-bold text-slate-100 flex items-center gap-2">
+                    <span>{founder.name}</span>
+                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-mono">
+                      RND
+                    </span>
+                  </h3>
+                  <div className="text-emerald-400 font-medium text-xs mt-0.5">
                     {founder.role[currentLang]}
                   </div>
                   <div className="text-[10px] text-slate-400 font-mono mt-1">
@@ -71,7 +78,19 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ currentLang }) =
                 {founder.bio[currentLang]}
               </p>
 
-              <div className="pt-2 flex flex-wrap gap-1.5">
+              {/* Special municipal badge & fast link */}
+              <a
+                href="#rnd-timizart-offer"
+                className="flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-emerald-950/80 to-teal-950/80 border border-emerald-400/40 text-emerald-300 text-xs font-semibold hover:border-emerald-300 transition-colors group"
+              >
+                <div className="flex items-center gap-2">
+                  <Shield className="w-4 h-4 text-emerald-400" />
+                  <span>{currentLang === 'ar' ? 'عرض خاص لمناضلي RND ببلدية تيميزار' : 'Offre exclusive militants RND Timizart'}</span>
+                </div>
+                <span className="group-hover:translate-x-1 transition-transform font-mono text-[11px]">→</span>
+              </a>
+
+              <div className="pt-1 flex flex-wrap gap-1.5">
                 {founder.specialties.map((spec, i) => (
                   <span key={i} className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-emerald-300 text-[10px] font-mono">
                     #{spec}

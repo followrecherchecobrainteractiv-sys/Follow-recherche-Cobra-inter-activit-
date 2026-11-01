@@ -17,9 +17,21 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({
 
   const t = TRANSLATIONS[currentLang];
 
+  // Combine default items with admin published items
+  const [allPortfolioItems, setAllPortfolioItems] = useState<PortfolioItem[]>(PORTFOLIO_ITEMS);
+
+  React.useEffect(() => {
+    try {
+      const saved = localStorage.getItem('cobra_admin_portfolio');
+      if (saved) {
+        setAllPortfolioItems(JSON.parse(saved));
+      }
+    } catch {}
+  }, []);
+
   const filteredItems = selectedFilter === 'all'
-    ? PORTFOLIO_ITEMS
-    : PORTFOLIO_ITEMS.filter((item) => item.pillarId === selectedFilter);
+    ? allPortfolioItems
+    : allPortfolioItems.filter((item) => item.pillarId === selectedFilter);
 
   const getPillarLabel = (pillarId: PillarId) => {
     switch (pillarId) {

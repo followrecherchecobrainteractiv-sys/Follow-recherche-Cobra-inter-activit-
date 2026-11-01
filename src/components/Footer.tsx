@@ -5,9 +5,10 @@ import { Shield, Sparkles, Code2, Gamepad2, Music, Video } from 'lucide-react';
 
 interface FooterProps {
   currentLang: Language;
+  onOpenMonetization?: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ currentLang }) => {
+export const Footer: React.FC<FooterProps> = ({ currentLang, onOpenMonetization }) => {
   const t = TRANSLATIONS[currentLang];
 
   return (
@@ -85,8 +86,22 @@ export const Footer: React.FC<FooterProps> = ({ currentLang }) => {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-400 font-mono gap-2">
-          <div>
-            © {new Date().getFullYear()} {COMPANY_NAME}. All rights reserved.
+          <div className="flex items-center gap-3">
+            <span>© {new Date().getFullYear()} {COMPANY_NAME}. All rights reserved.</span>
+            {onOpenMonetization && (
+              <a
+                href="#admin"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.location.hash = 'admin';
+                  onOpenMonetization();
+                }}
+                className="hover:text-amber-400 text-slate-500 hover:text-slate-300 transition-colors text-[10px] flex items-center gap-1 font-mono cursor-pointer"
+                title="لوحة تحكم المالك Rayan Ouarab"
+              >
+                <span>🔒 Admin Panel</span>
+              </a>
+            )}
           </div>
           <div>
             Dirigé par <span className="text-emerald-400 font-bold">{FOUNDER_NAME}</span>

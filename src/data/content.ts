@@ -12,6 +12,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
   fr: {
     navHome: "Accueil",
     navAnniversary: "Film Anniversaire",
+    navRndOffer: "⭐ Offre RND Timizart",
     navPillars: "Nos 4 Pôles",
     navAiArchitect: "IA Studio Architect",
     navPortfolio: "Réalisations",
@@ -50,6 +51,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
   ar: {
     navHome: "الرئيسية",
     navAnniversary: "فيديو الذكرى التأسيسية",
+    navRndOffer: "⭐ عرض مناضلي RND تيميزار",
     navPillars: "مجالاتنا الأربعة",
     navAiArchitect: "مهندس الذكاء الاصطناعي",
     navPortfolio: "أعمالنا والابتكارات",
@@ -77,7 +79,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     quoteSub: "حدد الخدمات المطلوبة للحصول على ملخص تقديري ومباشر لمشروعك.",
     contactTitle: "تواصل مع Cobra Inter Activité",
     contactSub: "هل أنت جاهز لإطلاق مشروعك التالي؟ فريقنا في خدمتك لمناقشة طموحاتك.",
-    founderRole: "المؤسس والمدير الإبداعي",
+    founderRole: "المؤسس والمدير الإبداعي | مناضل RND تيميزار",
     quickStatsGames: "ألعاب ومحركات 3D",
     quickStatsAi: "خوارزميات ذكاء اصطناعي",
     quickStatsMusic: "مقطوعات إنتاج موسيقي",
@@ -88,6 +90,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
   en: {
     navHome: "Home",
     navAnniversary: "Anniversary Film",
+    navRndOffer: "⭐ Special Offer: RND Timizart",
     navPillars: "4 Pillars",
     navAiArchitect: "AI Studio Architect",
     navPortfolio: "Showcase",
@@ -394,16 +397,16 @@ export const TEAM_MEMBERS: TeamMember[] = [
   {
     name: FOUNDER_NAME,
     role: {
-      fr: "Fondateur & Directeur Créatif & Technique",
-      ar: "المؤسس والمدير الإبداعي والتقني",
-      en: "Founder & Creative / Tech Director"
+      fr: "Fondateur & Directeur Créatif | Militant RND Timizart",
+      ar: "المؤسس والمدير الإبداعي والتقني | مناضل في حزب التجمع الوطني الديمقراطي (RND) - بلدية تيميزار",
+      en: "Founder & Creative / Tech Director | RND Timizart Militant"
     },
     bio: {
-      fr: "Passionné par l'innovation logicielle, la création de jeux vidéo et le cinéma 3D. Rayan Ouarab dirige Follow Recherche Cobra Inter Activité avec l'ambition de repousser les limites de la créativité numérique.",
-      ar: "مبتكر وشغوف بتطوير الألعاب والذكاء الاصطناعي والإنتاج السينمائي والموسيقي. يقود ريان وعراب الشركة لبناء حلول تكنولوجية وفنية غير مسبوقة.",
-      en: "Visionary lead behind Cobra Inter Activité, dedicated to pushing the boundaries of AI, high-end gaming, symphonic sound design, and 3D film production."
+      fr: "Rayan Ouarab dirige Follow Recherche Cobra Inter Activité et milite activement au sein du Rassemblement National Démocratique (RND) dans la commune de Timizart. Engagé pour le développement numérique, les opportunités pour la jeunesse locale et la concrétisation des projets innovants.",
+      ar: "ريان وعراب، مؤسس Follow Recherche Cobra Inter Activité ومناضل في حزب التجمع الوطني الديمقراطي (RND) ببلدية تيميزار. ملتزم بدعم التنمية المحلية، تمكين شباب تيميزار تكنولوجياً، وتطوير أحدث حلول البرمجيات، الألعاب والذكاء الاصطناعي.",
+      en: "Rayan Ouarab leads Follow Recherche Cobra Inter Activité and serves as an active RND militant in the Timizart municipality, dedicated to advancing digital empowerment for local youth, AI, and creative arts."
     },
-    avatar: heroImg,
-    specialties: ["Game Architecture", "AI Algorithms", "Music Composition", "Cinematic Direction"]
+    avatar: "/assets/aistudio/file_00000000ccd88246b01893fc97aae17e_2d0b1a6d.png",
+    specialties: ["RND Timizart", "Game Architecture", "AI Algorithms", "Music Composition", "Cinematic Direction"]
   }
 ];

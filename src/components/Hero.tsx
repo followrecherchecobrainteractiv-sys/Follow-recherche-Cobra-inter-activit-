@@ -49,6 +49,19 @@ export const Hero: React.FC<HeroProps> = ({
                 <Play className="w-3.5 h-3.5 text-amber-400 fill-current" />
                 <span>{currentLang === 'ar' ? 'فيديو الذكرى التأسيسية' : 'Film Anniversaire Officiel'}</span>
               </a>
+
+              <a
+                href="#rnd-timizart-offer"
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-emerald-950/90 via-slate-900 to-teal-950/90 border border-emerald-400/50 text-emerald-300 text-xs font-bold tracking-wider backdrop-blur-md shadow-[0_0_20px_rgba(16,185,129,0.25)] hover:border-emerald-300 transition-all hover:scale-105"
+              >
+                <img
+                  src="/assets/aistudio/file_00000000ccd88246b01893fc97aae17e_2d0b1a6d.png"
+                  alt="Rayan Ouarab"
+                  className="w-5 h-5 rounded-full object-cover object-top border border-emerald-400 shrink-0"
+                />
+                <span>{currentLang === 'ar' ? 'عرض خاص: مناضلو RND تيميزار' : 'Offre Spéciale RND Timizart'}</span>
+                <span className="text-[10px] text-amber-400 font-mono bg-amber-500/10 px-1.5 py-0.5 rounded border border-amber-500/30">100% OFF</span>
+              </a>
             </div>
 
             {/* Main Headline */}

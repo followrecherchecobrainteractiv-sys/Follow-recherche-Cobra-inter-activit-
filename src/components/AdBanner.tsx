@@ -101,15 +101,6 @@ export const AdBanner: React.FC<AdBannerProps> = ({ currentLang, slot, onOpenSet
             <Sparkles className="w-3 h-3 text-amber-400" />
             {labels.adBadge[currentLang]}
           </span>
-          {onOpenSettings && (
-            <button
-              onClick={onOpenSettings}
-              className="hover:underline text-amber-300 flex items-center gap-1"
-            >
-              <Info className="w-3 h-3" />
-              {labels.settingsLink[currentLang]}
-            </button>
-          )}
         </div>
         <div 
           className="w-full overflow-hidden flex justify-center items-center"
@@ -131,20 +122,10 @@ export const AdBanner: React.FC<AdBannerProps> = ({ currentLang, slot, onOpenSet
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
               {labels.adBadge[currentLang]}
             </span>
-            <span className="hidden sm:flex items-center gap-1 text-emerald-400 font-medium">
-              <ShieldCheck className="w-3.5 h-3.5" />
-              {labels.redotPayPayout[currentLang]}
+            <span className="hidden sm:flex items-center gap-1 text-slate-400 font-medium text-[11px]">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Verified Sponsor</span>
             </span>
-            {onOpenSettings && (
-              <button
-                onClick={onOpenSettings}
-                className="hover:text-amber-300 flex items-center gap-1 transition-colors"
-                title="Monetization Settings"
-              >
-                <DollarSign className="w-3.5 h-3.5 text-emerald-400" />
-                <span className="underline">{labels.settingsLink[currentLang]}</span>
-              </button>
-            )}
           </div>
 
           {/* Banner Main Content */}
@@ -160,7 +141,7 @@ export const AdBanner: React.FC<AdBannerProps> = ({ currentLang, slot, onOpenSet
                   {labels.sponsoredTitle[currentLang]}
                 </h4>
                 <p className="text-xs text-slate-400 line-clamp-1 mt-0.5">
-                  Adsterra / Monetag Premium Ad Banner - Integrated with RedotPay USDT Wallet
+                  Exclusive Digital Production & Creative Gaming Solutions
                 </p>
               </div>
             </div>
@@ -178,12 +159,6 @@ export const AdBanner: React.FC<AdBannerProps> = ({ currentLang, slot, onOpenSet
               </a>
             </div>
           </div>
-
-          {adClicked && (
-            <div className="mt-2 p-2 bg-emerald-950/80 border border-emerald-500/50 rounded-lg text-emerald-300 text-xs text-center font-mono animate-fade-in">
-              ✨ {labels.clickSuccess[currentLang]}
-            </div>
-          )}
         </div>
       </div>
     );
@@ -199,9 +174,9 @@ export const AdBanner: React.FC<AdBannerProps> = ({ currentLang, slot, onOpenSet
           <div className="w-12 h-12 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-2">
             <DollarSign className="w-6 h-6 text-emerald-400" />
           </div>
-          <h5 className="text-sm font-bold text-slate-200">Adsterra / AdSense Slot (300x250)</h5>
+          <h5 className="text-sm font-bold text-slate-200">Cobra Studio Featured Offer</h5>
           <p className="text-xs text-slate-400 mt-1 max-w-xs">
-            RedotPay USDT Auto-Payout Enabled
+            Discover premium media & game production deals
           </p>
         </div>
         <a
@@ -214,11 +189,6 @@ export const AdBanner: React.FC<AdBannerProps> = ({ currentLang, slot, onOpenSet
           {labels.ctaButton[currentLang]}
           <ExternalLink className="w-3.5 h-3.5" />
         </a>
-        {adClicked && (
-          <div className="mt-2 text-[11px] text-emerald-400 font-mono">
-            +$0.15 USDT to RedotPay!
-          </div>
-        )}
       </div>
     );
   }
@@ -232,7 +202,7 @@ export const AdBanner: React.FC<AdBannerProps> = ({ currentLang, slot, onOpenSet
               {labels.adBadge[currentLang]}
             </span>
             <p className="text-xs md:text-sm text-slate-200 hidden sm:block font-medium">
-              Cobra Inter Activité - Sponsor Banner (RedotPay Verified Monetization)
+              Cobra Inter Activité - Official Digital Production Showcase
             </p>
           </div>
           <div className="flex items-center gap-3">
@@ -245,15 +215,6 @@ export const AdBanner: React.FC<AdBannerProps> = ({ currentLang, slot, onOpenSet
             >
               {labels.ctaButton[currentLang]}
             </a>
-            {onOpenSettings && (
-              <button
-                onClick={onOpenSettings}
-                className="p-1.5 hover:bg-slate-800 text-slate-400 hover:text-amber-400 rounded-lg text-xs flex items-center gap-1"
-                title="RedotPay Settings"
-              >
-                <DollarSign className="w-4 h-4 text-emerald-400" />
-              </button>
-            )}
             <button
               onClick={() => setIsDismissed(true)}
               className="p-1.5 hover:bg-slate-800 text-slate-400 hover:text-white rounded-lg"
