@@ -101,32 +101,89 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ currentLang }) =
 
             {/* Direct Channels */}
             <div className="space-y-3">
+              {/* Email */}
               <div className="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-4 backdrop-blur-md">
                 <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-xs text-slate-400 font-mono uppercase">Email Direct</div>
-                  <a href="mailto:contact@cobra-interactivite.com" className="text-sm font-bold text-slate-100 hover:text-emerald-400 transition-colors">
-                    contact@cobra-interactivite.com
+                  <div className="text-xs text-slate-400 font-mono uppercase">{currentLang === 'ar' ? 'البريد الإلكتروني المباشر' : 'Email Direct'}</div>
+                  <a href="mailto:rayaneouarab2000@gmail.com" className="text-sm font-bold text-slate-100 hover:text-emerald-400 transition-colors">
+                    rayaneouarab2000@gmail.com
                   </a>
                 </div>
               </div>
 
-              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-4 backdrop-blur-md">
-                <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
-                  <MessageSquare className="w-5 h-5" />
+              {/* WhatsApp 1 & Call */}
+              <div className="p-4 rounded-2xl bg-white/5 border border-emerald-500/30 flex items-center justify-between gap-4 backdrop-blur-md">
+                <div className="flex items-center gap-3">
+                  <div className="p-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+                    <MessageSquare className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-[11px] text-slate-400 font-mono uppercase">{currentLang === 'ar' ? 'واتساب وهاتف 1' : 'WhatsApp & Appel 1'}</div>
+                    <div className="text-sm font-bold text-emerald-400 font-mono">05 63 21 48 88</div>
+                  </div>
                 </div>
-                <div>
-                  <div className="text-xs text-slate-400 font-mono uppercase">WhatsApp / Contact Rapide</div>
+                <div className="flex items-center gap-1.5">
                   <a
-                    href="https://wa.me/?text=Bonjour%20Cobra%20Inter%20Activit%C3%A9"
+                    href="https://wa.me/213563214888?text=Bonjour%20Rayan%20Ouarab%20Cobra%20Inter%20Activit%C3%A9"
                     target="_blank"
                     rel="noreferrer"
-                    className="text-sm font-bold text-emerald-400 hover:underline"
+                    className="px-2.5 py-1.5 rounded-xl bg-emerald-500/20 text-emerald-300 hover:bg-emerald-500 hover:text-slate-950 text-xs font-bold transition-all"
                   >
-                    Démarrer une conversation WhatsApp →
+                    WhatsApp
                   </a>
+                  <a
+                    href="tel:0563214888"
+                    className="px-2.5 py-1.5 rounded-xl bg-white/10 text-slate-300 hover:bg-white/20 text-xs font-bold transition-all"
+                  >
+                    📞
+                  </a>
+                </div>
+              </div>
+
+              {/* WhatsApp 2 & Call */}
+              <div className="p-4 rounded-2xl bg-white/5 border border-emerald-500/30 flex items-center justify-between gap-4 backdrop-blur-md">
+                <div className="flex items-center gap-3">
+                  <div className="p-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+                    <Phone className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-[11px] text-slate-400 font-mono uppercase">{currentLang === 'ar' ? 'واتساب وهاتف 2' : 'WhatsApp & Appel 2'}</div>
+                    <div className="text-sm font-bold text-emerald-400 font-mono">07 96 68 32 88</div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <a
+                    href="https://wa.me/213796683288?text=Bonjour%20Rayan%20Ouarab%20Cobra%20Inter%20Activit%C3%A9"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="px-2.5 py-1.5 rounded-xl bg-emerald-500/20 text-emerald-300 hover:bg-emerald-500 hover:text-slate-950 text-xs font-bold transition-all"
+                  >
+                    WhatsApp
+                  </a>
+                  <a
+                    href="tel:0796683288"
+                    className="px-2.5 py-1.5 rounded-xl bg-white/10 text-slate-300 hover:bg-white/20 text-xs font-bold transition-all"
+                  >
+                    📞
+                  </a>
+                </div>
+              </div>
+
+              {/* Location */}
+              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-4 backdrop-blur-md">
+                <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+                  <MapPin className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-xs text-slate-400 font-mono uppercase">{currentLang === 'ar' ? 'المقر والبلدية' : 'Localisation'}</div>
+                  <div className="text-sm font-bold text-slate-200">
+                    {currentLang === 'ar' 
+                      ? 'بلدية تيميزار - سوق الحد - دائرة واڨنون - ولاية تيزي وزو، الجزائر' 
+                      : 'Commune de Timizart - Souk El Had - Daïra d\'Ouaguenoun - Wilaya de Tizi Ouzou, Algérie'}
+                  </div>
                 </div>
               </div>
             </div>

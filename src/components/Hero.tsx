@@ -59,7 +59,7 @@ export const Hero: React.FC<HeroProps> = ({
                   alt="Rayan Ouarab"
                   className="w-5 h-5 rounded-full object-cover object-top border border-emerald-400 shrink-0"
                 />
-                <span>{currentLang === 'ar' ? 'عرض خاص: مناضلو RND تيميزار' : 'Offre Spéciale RND Timizart'}</span>
+                <span>{currentLang === 'ar' ? 'عرض خاص: RND تيميزار (سوق الحد - واڨنون)' : 'Offre Spéciale RND Timizart (Souk El Had)'}</span>
                 <span className="text-[10px] text-amber-400 font-mono bg-amber-500/10 px-1.5 py-0.5 rounded border border-amber-500/30">100% OFF</span>
               </a>
             </div>

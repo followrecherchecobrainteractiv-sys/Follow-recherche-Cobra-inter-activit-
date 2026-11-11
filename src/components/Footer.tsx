@@ -48,6 +48,7 @@ export const Footer: React.FC<FooterProps> = ({ currentLang, onOpenMonetization 
               Navigation
             </div>
             <ul className="space-y-2 text-xs">
+              <li><a href="#rnd-timizart-offer" className="text-emerald-300 font-bold hover:text-emerald-200 transition-colors">{t.navRndOffer || (currentLang === 'ar' ? '⭐ عرض RND تيميزار' : '⭐ Offre RND Timizart')}</a></li>
               <li><a href="#pillars" className="hover:text-emerald-400 transition-colors">{t.navPillars}</a></li>
               <li><a href="#ai-architect" className="hover:text-emerald-400 transition-colors">{t.navAiArchitect}</a></li>
               <li><a href="#portfolio" className="hover:text-emerald-400 transition-colors">{t.navPortfolio}</a></li>

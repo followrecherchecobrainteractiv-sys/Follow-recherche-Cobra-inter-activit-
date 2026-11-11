@@ -50,7 +50,9 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-emerald-500/30 text-emerald-300 text-xs font-mono font-bold uppercase tracking-wider backdrop-blur-md">
             <Shield className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Showcase Réalisations</span>
+            <span>
+              {currentLang === 'ar' ? 'معرض الإنجازات والأعمال' : currentLang === 'fr' ? 'Showcase Réalisations' : 'Portfolio Showcase'}
+            </span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-100 tracking-tight">
@@ -66,10 +68,22 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({
         <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-12">
           {[
             { id: 'all', label: t.filterAll },
-            { id: 'programming', label: 'Programmation & IA' },
-            { id: 'game', label: 'Jeux Vidéo 3D' },
-            { id: 'music', label: 'Production Musicale' },
-            { id: 'film', label: 'Films & Cinématique' },
+            { 
+              id: 'programming', 
+              label: currentLang === 'ar' ? 'البرمجة والذكاء الاصطناعي' : currentLang === 'fr' ? 'Programmation & IA' : 'AI & Code' 
+            },
+            { 
+              id: 'game', 
+              label: currentLang === 'ar' ? 'ألعاب الفيديو 3D' : currentLang === 'fr' ? 'Jeux Vidéo 3D' : '3D Video Games' 
+            },
+            { 
+              id: 'music', 
+              label: currentLang === 'ar' ? 'الإنتاج الموسيقي والصوتي' : currentLang === 'fr' ? 'Production Musicale' : 'Music Studio' 
+            },
+            { 
+              id: 'film', 
+              label: currentLang === 'ar' ? 'الأفلام والسينما 3D' : currentLang === 'fr' ? 'Films & Cinématique' : 'Cinematics & 3D' 
+            },
           ].map((filter) => (
             <button
               key={filter.id}

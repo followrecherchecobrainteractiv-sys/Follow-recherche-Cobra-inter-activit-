@@ -580,38 +580,35 @@ export const AdminControlDashboard: React.FC<AdminControlDashboardProps> = ({
                       </div>
                       <div>
                         <h4 className="font-black text-base text-slate-100 flex items-center gap-2">
-                          <span>حساب RedotPay المستلم لأرباح موقعك</span>
+                          <span>قنوات التواصل وواتساب المباشر - Rayane Ouarab</span>
                           <span className="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full border border-emerald-500/30 font-mono">
-                            تحويل تلقائي نشط
+                            نشط 24/7
                           </span>
                         </h4>
                         <p className="text-xs text-slate-400">
-                          RedotPay ID: <span className="text-amber-300 font-mono font-bold">{adSettings.redotPayId}</span>
+                          الهاتف 1: <span className="text-emerald-300 font-mono font-bold">05 63 21 48 88</span> | الهاتف 2: <span className="text-emerald-300 font-mono font-bold">07 96 68 32 88</span>
                         </p>
                       </div>
                     </div>
 
                     <a
-                      href="https://my.redotpay.com"
+                      href="https://wa.me/213563214888"
                       target="_blank"
                       rel="noreferrer"
-                      className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-amber-300 text-xs font-bold rounded-xl border border-amber-500/30 flex items-center gap-2 transition-colors"
+                      className="px-4 py-2 bg-emerald-500/20 hover:bg-emerald-500 hover:text-slate-950 text-emerald-300 text-xs font-bold rounded-xl border border-emerald-500/40 flex items-center gap-2 transition-colors"
                     >
-                      <span>تطبيق RedotPay المباشر</span>
+                      <span>فتح واتساب 1</span>
                       <ExternalLink className="w-3.5 h-3.5" />
                     </a>
                   </div>
 
                   <div className="space-y-2">
                     <label className="text-xs text-slate-300 font-medium">
-                      عنوان محفظة RedotPay USDT (TRC20 / BEP20):
+                      المقر الإداري المعتمد:
                     </label>
-                    <input
-                      type="text"
-                      value={adSettings.redotPayWalletUsdt}
-                      onChange={(e) => setAdSettings({ ...adSettings, redotPayWalletUsdt: e.target.value })}
-                      className="w-full bg-slate-950 border border-slate-700 focus:border-amber-400 rounded-xl px-3 py-2.5 text-xs font-mono text-amber-200 outline-none"
-                    />
+                    <div className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-slate-200">
+                      بلدية تيميزار - سوق الحد - دائرة واڨنون - ولاية تيزي وزو، الجزائر
+                    </div>
                   </div>
                 </div>
 

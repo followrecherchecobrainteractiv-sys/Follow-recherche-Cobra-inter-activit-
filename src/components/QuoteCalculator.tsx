@@ -43,10 +43,13 @@ export const QuoteCalculator: React.FC<QuoteCalculatorProps> = ({
   };
 
   const calculateEstimate = () => {
-    let base = formData.selectedPillars.length * 3500;
-    if (formData.timeline === 'Express (2-3 semaines)') base *= 1.3;
-    return base;
+    let baseEur = formData.selectedPillars.length * 3500;
+    if (formData.timeline.includes('Express')) baseEur *= 1.3;
+    return baseEur;
   };
+
+  const estimateEur = calculateEstimate();
+  const estimateDzd = Math.round(estimateEur * 240); // Approx Algerian Dinar rate
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -61,7 +64,9 @@ export const QuoteCalculator: React.FC<QuoteCalculatorProps> = ({
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-emerald-500/30 text-emerald-300 text-xs font-mono font-bold uppercase tracking-wider backdrop-blur-md">
             <Calculator className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Estimateur & Devis Interactif</span>
+            <span>
+              {currentLang === 'ar' ? 'حاسبة التكلفة وعروض الأسعار' : currentLang === 'fr' ? 'Estimateur & Devis Interactif' : 'Interactive Quote Estimator'}
+            </span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-100 tracking-tight">
@@ -79,16 +84,24 @@ export const QuoteCalculator: React.FC<QuoteCalculatorProps> = ({
               <CheckCircle2 className="w-10 h-10" />
             </div>
             <h3 className="text-2xl font-bold text-slate-100">
-              Demande de Devis Transmise avec Succès !
+              {currentLang === 'ar' ? 'تم إرسال طلب عرض السعر بنجاح !' : 'Demande de Devis Transmise avec Succès !'}
             </h3>
             <p className="text-slate-300 text-sm leading-relaxed">
-              Merci <span className="text-emerald-400 font-bold">{formData.clientName}</span>. L'équipe de <span className="text-emerald-400 font-bold">Follow Recherche Cobra Inter Activité</span> étudie votre demande et vous recontactera sous 24 heures avec une proposition technique détaillée.
+              {currentLang === 'ar' ? (
+                <>
+                  شكراً لك <span className="text-emerald-400 font-bold">{formData.clientName}</span>. يدرس فريق <span className="text-emerald-400 font-bold">Follow Recherche Cobra Inter Activité</span> طلبك وسيتواصل معك الأخ ريان وعراب في غضون 24 ساعة بمقترح تقني ومالي مفصل.
+                </>
+              ) : (
+                <>
+                  Merci <span className="text-emerald-400 font-bold">{formData.clientName}</span>. L'équipe de <span className="text-emerald-400 font-bold">Follow Recherche Cobra Inter Activité</span> étudie votre demande et vous recontactera sous 24 heures avec une proposition technique détaillée.
+                </>
+              )}
             </p>
             <button
               onClick={() => setSubmitted(false)}
               className="px-6 py-2.5 rounded-xl bg-emerald-500 text-slate-950 font-bold text-xs uppercase hover:bg-emerald-400 transition-colors shadow-lg shadow-emerald-500/20"
             >
-              Soumettre une Autre Demande
+              {currentLang === 'ar' ? 'إرسال طلب جديد' : 'Soumettre une Autre Demande'}
             </button>
           </div>
         ) : (
@@ -97,14 +110,28 @@ export const QuoteCalculator: React.FC<QuoteCalculatorProps> = ({
             {/* Step 1: Select Pillars */}
             <div className="space-y-3">
               <label className="text-xs font-mono uppercase tracking-wider text-emerald-400 font-bold flex items-center gap-2">
-                <span>1. Choisissez les Pôles Requis :</span>
+                <span>
+                  {currentLang === 'ar' ? '1. حدد مجالات المشروع المطلوبة :' : '1. Choisissez les Pôles Requis :'}
+                </span>
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                 {[
-                  { id: 'programming', name: 'Programmation & IA' },
-                  { id: 'game', name: 'Développement Jeux 3D' },
-                  { id: 'music', name: 'Production Musicale' },
-                  { id: 'film', name: 'Films & Cinématiques' },
+                  { 
+                    id: 'programming', 
+                    name: currentLang === 'ar' ? 'برمجة & ذكاء اصطناعي' : 'Programmation & IA' 
+                  },
+                  { 
+                    id: 'game', 
+                    name: currentLang === 'ar' ? 'تطوير ألعاب 3D' : 'Développement Jeux 3D' 
+                  },
+                  { 
+                    id: 'music', 
+                    name: currentLang === 'ar' ? 'إنتاج صوتي وموسيقي' : 'Production Musicale' 
+                  },
+                  { 
+                    id: 'film', 
+                    name: currentLang === 'ar' ? 'أفلام وسينما 3D' : 'Films & Cinématiques' 
+                  },
                 ].map((item) => {
                   const active = formData.selectedPillars.includes(item.id as PillarId);
                   return (
@@ -112,7 +139,7 @@ export const QuoteCalculator: React.FC<QuoteCalculatorProps> = ({
                       key={item.id}
                       type="button"
                       onClick={() => togglePillar(item.id as PillarId)}
-                      className={`p-4 rounded-2xl text-left border text-xs font-bold transition-all backdrop-blur-md ${
+                      className={`p-4 rounded-2xl text-left rtl:text-right border text-xs font-bold transition-all backdrop-blur-md ${
                         active
                           ? 'bg-emerald-500/20 border-emerald-500 text-emerald-200 shadow-md'
                           : 'bg-white/5 border-white/10 text-slate-400 hover:border-white/20'
@@ -133,32 +160,46 @@ export const QuoteCalculator: React.FC<QuoteCalculatorProps> = ({
               
               <div className="space-y-2">
                 <label className="text-xs font-mono uppercase tracking-wider text-emerald-400 font-bold">
-                  2. Délai Souhaité :
+                  {currentLang === 'ar' ? '2. المدة الزمنية المفضلة للتنفيذ :' : '2. Délai Souhaité :'}
                 </label>
                 <select
                   value={formData.timeline}
                   onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
                   className="w-full p-3.5 rounded-xl bg-slate-900/80 border border-white/10 text-slate-200 text-xs focus:border-emerald-500 focus:outline-none backdrop-blur-md"
                 >
-                  <option value="Express (2-3 semaines)">Express (2-3 semaines)</option>
-                  <option value="4-8 semaines">Standard (4-8 semaines)</option>
-                  <option value="3 mois et plus">Projet d'Envergure (3 mois +)</option>
+                  <option value="Express (2-3 semaines)">
+                    {currentLang === 'ar' ? 'سريع جداً (2-3 أسابيع)' : 'Express (2-3 semaines)'}
+                  </option>
+                  <option value="4-8 semaines">
+                    {currentLang === 'ar' ? 'عادي ومثالي (4-8 أسابيع)' : 'Standard (4-8 semaines)'}
+                  </option>
+                  <option value="3 mois et plus">
+                    {currentLang === 'ar' ? 'مشروع ضخم وشامل (3 أشهر فما فوق)' : 'Projet d\'Envergure (3 mois +)'}
+                  </option>
                 </select>
               </div>
 
               <div className="space-y-2">
                 <label className="text-xs font-mono uppercase tracking-wider text-emerald-400 font-bold">
-                  3. Budget Estimatif :
+                  {currentLang === 'ar' ? '3. الميزانية التقديرية المرصودة :' : '3. Budget Estimatif :'}
                 </label>
                 <select
                   value={formData.budgetRange}
                   onChange={(e) => setFormData({ ...formData, budgetRange: e.target.value })}
                   className="w-full p-3.5 rounded-xl bg-slate-900/80 border border-white/10 text-slate-200 text-xs focus:border-emerald-500 focus:outline-none backdrop-blur-md"
                 >
-                  <option value="2000€ - 5000€">2 000 € - 5 000 €</option>
-                  <option value="5000€ - 15000€">5 000 € - 15 000 €</option>
-                  <option value="15000€ - 50000€">15 000 € - 50 000 €</option>
-                  <option value="Sur-mesure Sur Devis">Sur-mesure Sur Devis</option>
+                  <option value="2000€ - 5000€">
+                    {currentLang === 'ar' ? '400,000 دج - 1,000,000 دج (~ 2,000€ - 5,000€)' : '2 000 € - 5 000 € (~ 450,000 DZD)'}
+                  </option>
+                  <option value="5000€ - 15000€">
+                    {currentLang === 'ar' ? '1,000,000 دج - 3,000,000 دج (~ 5,000€ - 15,000€)' : '5 000 € - 15 000 € (~ 1,500,000 DZD)'}
+                  </option>
+                  <option value="15000€ - 50000€">
+                    {currentLang === 'ar' ? '3,000,000 دج فما فوق (~ 15,000€ - 50,000€)' : '15 000 € - 50 000 €'}
+                  </option>
+                  <option value="Sur-mesure Sur Devis">
+                    {currentLang === 'ar' ? 'مخصص / دراسة حسب الطلب' : 'Sur-mesure Sur Devis'}
+                  </option>
                 </select>
               </div>
 
@@ -167,14 +208,14 @@ export const QuoteCalculator: React.FC<QuoteCalculatorProps> = ({
             {/* Step 3: Contact Info */}
             <div className="space-y-4 pt-4 border-t border-white/10">
               <label className="text-xs font-mono uppercase tracking-wider text-emerald-400 font-bold">
-                4. Vos Coordonnées de Contact :
+                {currentLang === 'ar' ? '4. معلومات التواصل الخاصة بك :' : '4. Vos Coordonnées de Contact :'}
               </label>
 
               <div className="grid sm:grid-cols-3 gap-4">
                 <input
                   type="text"
                   required
-                  placeholder="Votre Nom & Prénom"
+                  placeholder={currentLang === 'ar' ? 'الاسم واللقب *' : 'Votre Nom & Prénom *'}
                   value={formData.clientName}
                   onChange={(e) => setFormData({ ...formData, clientName: e.target.value })}
                   className="p-3.5 rounded-xl bg-slate-900/80 border border-white/10 text-slate-200 text-xs focus:border-emerald-500 focus:outline-none backdrop-blur-md placeholder:text-slate-500"
@@ -182,14 +223,14 @@ export const QuoteCalculator: React.FC<QuoteCalculatorProps> = ({
                 <input
                   type="email"
                   required
-                  placeholder="Adresse Email"
+                  placeholder={currentLang === 'ar' ? 'البريد الإلكتروني *' : 'Adresse Email *'}
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className="p-3.5 rounded-xl bg-slate-900/80 border border-white/10 text-slate-200 text-xs focus:border-emerald-500 focus:outline-none backdrop-blur-md placeholder:text-slate-500"
                 />
                 <input
                   type="tel"
-                  placeholder="Numéro de Téléphone"
+                  placeholder={currentLang === 'ar' ? 'رقم الهاتف / واتساب' : 'Numéro de Téléphone / WhatsApp'}
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   className="p-3.5 rounded-xl bg-slate-900/80 border border-white/10 text-slate-200 text-xs focus:border-emerald-500 focus:outline-none backdrop-blur-md placeholder:text-slate-500"
@@ -198,7 +239,7 @@ export const QuoteCalculator: React.FC<QuoteCalculatorProps> = ({
 
               <textarea
                 rows={3}
-                placeholder="Précisions complémentaires sur votre projet..."
+                placeholder={currentLang === 'ar' ? 'توضيحات إضافية حول فكرة مشروعك والمتطلبات الخاصة...' : 'Précisions complémentaires sur votre projet...'}
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                 className="w-full p-3.5 rounded-xl bg-slate-900/80 border border-white/10 text-slate-200 text-xs focus:border-emerald-500 focus:outline-none backdrop-blur-md placeholder:text-slate-500"
@@ -208,9 +249,9 @@ export const QuoteCalculator: React.FC<QuoteCalculatorProps> = ({
             {/* Submit Bar */}
             <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/10">
               <div className="text-xs font-mono text-slate-400">
-                <span>Estimation indicative basée sur vos pôles choisis: </span>
-                <span className="text-emerald-400 font-bold text-sm ml-1">
-                  ~ {calculateEstimate()} € TTC
+                <span>{currentLang === 'ar' ? 'التقدير الأولي حسب المجالات المختارة:' : 'Estimation indicative basée sur vos pôles choisis: '}</span>
+                <span className="text-emerald-400 font-bold text-sm ml-1 rtl:mr-1">
+                  ~ {estimateEur.toLocaleString()} € / {estimateDzd.toLocaleString()} DZD
                 </span>
               </div>
 
@@ -219,7 +260,7 @@ export const QuoteCalculator: React.FC<QuoteCalculatorProps> = ({
                 className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 transition-all hover:scale-105"
               >
                 <Send className="w-4 h-4" />
-                <span>Envoyer la Demande de Devis</span>
+                <span>{currentLang === 'ar' ? 'إرسال طلب عرض السعر' : 'Envoyer la Demande'}</span>
               </button>
             </div>
 

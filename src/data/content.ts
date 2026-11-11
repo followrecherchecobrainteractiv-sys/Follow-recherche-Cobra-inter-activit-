@@ -397,16 +397,16 @@ export const TEAM_MEMBERS: TeamMember[] = [
   {
     name: FOUNDER_NAME,
     role: {
-      fr: "Fondateur & Directeur Créatif | Militant RND Timizart",
-      ar: "المؤسس والمدير الإبداعي والتقني | مناضل في حزب التجمع الوطني الديمقراطي (RND) - بلدية تيميزار",
-      en: "Founder & Creative / Tech Director | RND Timizart Militant"
+      fr: "Fondateur & Directeur Créatif | Militant RND Timizart (Souk El Had - Ouaguenoun - Tizi Ouzou)",
+      ar: "المؤسس والمدير الإبداعي والتقني | مناضل في حزب RND (بلدية تيميزار - سوق الحد - دائرة واڨنون - ولاية تيزي وزو)",
+      en: "Founder & Creative / Tech Director | RND Timizart (Souk El Had - Ouaguenoun - Tizi Ouzou)"
     },
     bio: {
-      fr: "Rayan Ouarab dirige Follow Recherche Cobra Inter Activité et milite activement au sein du Rassemblement National Démocratique (RND) dans la commune de Timizart. Engagé pour le développement numérique, les opportunités pour la jeunesse locale et la concrétisation des projets innovants.",
-      ar: "ريان وعراب، مؤسس Follow Recherche Cobra Inter Activité ومناضل في حزب التجمع الوطني الديمقراطي (RND) ببلدية تيميزار. ملتزم بدعم التنمية المحلية، تمكين شباب تيميزار تكنولوجياً، وتطوير أحدث حلول البرمجيات، الألعاب والذكاء الاصطناعي.",
-      en: "Rayan Ouarab leads Follow Recherche Cobra Inter Activité and serves as an active RND militant in the Timizart municipality, dedicated to advancing digital empowerment for local youth, AI, and creative arts."
+      fr: "Rayan Ouarab dirige Follow Recherche Cobra Inter Activité et milite activement au sein du RND dans la commune de Timizart (Souk El Had, Daïra d'Ouaguenoun, Wilaya de Tizi Ouzou). Engagé pour le développement numérique, les opportunités pour la jeunesse et les projets innovants.",
+      ar: "ريان وعراب، مؤسس Follow Recherche Cobra ومناضل في حزب التجمع الوطني الديمقراطي (RND) ببلدية تيميزار (سوق الحد - دائرة واڨنون - ولاية تيزي وزو). ملتزم بدعم التنمية المحلية، تمكين شباب المنطقة تكنولوجياً، وتطوير أحدث حلول البرمجيات، الألعاب والذكاء الاصطناعي.",
+      en: "Rayan Ouarab leads Follow Recherche Cobra Inter Activité and serves as an active RND militant in Timizart (Souk El Had, Ouaguenoun, Tizi Ouzou), dedicated to advancing digital empowerment for local youth and creative arts."
     },
     avatar: "/assets/aistudio/file_00000000ccd88246b01893fc97aae17e_2d0b1a6d.png",
-    specialties: ["RND Timizart", "Game Architecture", "AI Algorithms", "Music Composition", "Cinematic Direction"]
+    specialties: ["RND Timizart", "Souk El Had", "Ouaguenoun", "Game Architecture", "AI Algorithms"]
   }
 ];

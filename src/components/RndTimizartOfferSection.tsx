@@ -35,8 +35,12 @@ export const RndTimizartOfferSection: React.FC<RndTimizartOfferSectionProps> = (
   const [notes, setNotes] = useState('');
   const [formSubmitted, setFormSubmitted] = useState(false);
 
+  const [selectedVillage, setSelectedVillage] = useState('Abizar');
   const promoCode = 'RND-TIMIZART-2026';
   const photoUrl = '/assets/aistudio/file_00000000ccd88246b01893fc97aae17e_2d0b1a6d.png';
+
+  const phonePrimary = "0563214888";
+  const phoneSecondary = "0796683288";
 
   const handleCopyCode = () => {
     navigator.clipboard.writeText(promoCode);
@@ -51,10 +55,13 @@ export const RndTimizartOfferSection: React.FC<RndTimizartOfferSectionProps> = (
 
   const isRtl = currentLang === 'ar';
 
-  // Pre-configured WhatsApp message
+  // Pre-configured WhatsApp message to Rayan Ouarab
   const whatsappText = encodeURIComponent(
-    `السلام عليكم أخي ريان وعراب،\nأنا مناضل في حزب التجمع الوطني الديمقراطي (RND) ببلدية تيميزار.\nالاسم: ${militantName || 'مناضل RND تيميزار'}\nرقم الهاتف: ${militantPhone || 'متوفر'}\nأرغب في الاستفادة من العرض الخاص لمناضلي تيميزار (كود: ${promoCode}).`
+    `السلام عليكم أخي ريان وعراب،\nأنا مناضل في حزب التجمع الوطني الديمقراطي (RND) ببلدية تيميزار.\nالاسم: ${militantName || 'مناضل RND تيميزار'}\nالقرية: ${selectedVillage}\nالهاتف: ${militantPhone || 'متوفر'}\nالبطاقة/الصفة: ${militantCard || 'مناضل RND'}\nأرغب في الاستفادة من العرض الخاص لمناضلي تيميزار (كود: ${promoCode}).`
   );
+
+  const whatsappUrlPrimary = `https://wa.me/213563214888?text=${whatsappText}`;
+  const whatsappUrlSecondary = `https://wa.me/213796683288?text=${whatsappText}`;
 
   return (
     <section 
@@ -92,18 +99,18 @@ export const RndTimizartOfferSection: React.FC<RndTimizartOfferSectionProps> = (
                 <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-green-300 bg-clip-text text-transparent underline decoration-emerald-500/50 decoration-wavy">
                   حزب التجمع الوطني الديمقراطي (RND)
                 </span>{' '}
-                ببلدية تيميزار
+                ببلدية تيميزار - سوق الحد - دائرة واڨنون - ولاية تيزي وزو
               </>
             ) : currentLang === 'fr' ? (
               <>
                 Offre Exceptionnelle pour Chaque Militant du{' '}
                 <span className="text-emerald-400">RND (Rassemblement National Démocratique)</span>{' '}
-                de la Commune de Timizart
+                Commune de Timizart - Souk El Had - Daïra d'Ouaguenoun - Tizi Ouzou
               </>
             ) : (
               <>
                 Special Exclusive Offer for Every Militant of the{' '}
-                <span className="text-emerald-400">RND Party</span> in Timizart Municipality
+                <span className="text-emerald-400">RND Party</span> in Timizart - Souk El Had - Ouaguenoun - Tizi Ouzou
               </>
             )}
           </h2>
@@ -167,16 +174,16 @@ export const RndTimizartOfferSection: React.FC<RndTimizartOfferSectionProps> = (
                       </span>
                     </h3>
                     <div className="text-xs text-emerald-400 font-semibold mt-0.5 flex items-center gap-1.5">
-                      <MapPin className="w-3.5 h-3.5 text-red-400" />
-                      <span>مناضل في حزب التجمع الوطني الديمقراطي (RND) - بلدية تيميزار</span>
+                      <MapPin className="w-3.5 h-3.5 text-red-400 shrink-0" />
+                      <span>مناضل في حزب RND - بلدية تيميزار (سوق الحد - دائرة واڨنون - ولاية تيزي وزو)</span>
                     </div>
                   </div>
                 </div>
 
                 <p className="text-xs text-slate-300 leading-relaxed font-light">
                   {currentLang === 'ar'
-                    ? '«وفاءً لتضحيات شهدائنا الأبرار واستمراراً لمسيرتهم.. معاً من أجل جزائر منتصرة وتنمية واعدة لشباب بلدية تيميزار الحبيبة.»'
-                    : '« Fidélité au sacrifice de nos martyrs.. Ensemble pour une Algérie victorieuse et le progrès numérique de la commune de Timizart. »'}
+                    ? '«وفاءً لتضحيات شهدائنا الأبرار واستمراراً لمسيرتهم.. معاً من أجل جزائر منتصرة وتنمية واعدة لشباب بلدية تيميزار، سوق الحد، دائرة واڨنون.»'
+                    : '« Fidélité au sacrifice de nos martyrs.. Ensemble pour une Algérie victorieuse et le progrès numérique de Timizart, Souk El Had, Ouaguenoun. »'}
                 </p>
 
                 <div className="pt-2 flex items-center justify-between border-t border-white/10 text-[11px] font-mono text-slate-400">
@@ -200,12 +207,14 @@ export const RndTimizartOfferSection: React.FC<RndTimizartOfferSectionProps> = (
               </div>
               <div className="text-xs">
                 <div className="text-slate-200 font-bold">
-                  {currentLang === 'ar' ? 'المكتب البلدي - تيميزار' : 'Bureau Communal - Timizart'}
+                  {currentLang === 'ar' 
+                    ? 'المكتب البلدي RND - تيميزار (سوق الحد - واڨنون)' 
+                    : 'Bureau Communal RND - Timizart (Souk El Had - Ouaguenoun)'}
                 </div>
                 <div className="text-slate-400 text-[11px]">
                   {currentLang === 'ar' 
-                    ? 'دعم مباشر لكل مناضل، شاب، وطالب بالبلدية' 
-                    : 'Soutien direct aux militants et jeunes de la commune'}
+                    ? 'دعم مباشر لكل مناضل، شاب، وطالب بالبلدية ودائرة واڨنون' 
+                    : 'Soutien direct aux militants et jeunes de la commune et de la Daïra'}
                 </div>
               </div>
             </div>
@@ -314,9 +323,23 @@ export const RndTimizartOfferSection: React.FC<RndTimizartOfferSectionProps> = (
                 </div>
                 <p className="text-xs text-slate-300 leading-relaxed">
                   {currentLang === 'ar'
-                    ? 'خط تواصل مخصص عبر واتساب والهاتف لتسريع معالجة طلبات رفاقنا المناضلين وأبناء بلدية تيميزار.'
-                    : 'Ligne directe prioritaire par WhatsApp pour répondre et accompagner rapidement les demandes.'}
+                    ? 'خطا تواصل مخصصان عبر واتساب والمكالمات (0563214888 / 0796683288) لتسريع معالجة طلبات رفاقنا المناضلين وأبناء تيميزار.'
+                    : 'Lignes prioritaires WhatsApp & appels (0563214888 / 0796683288) pour accompagner rapidement les demandes.'}
                 </p>
+                <div className="flex flex-wrap gap-2 pt-1">
+                  <a
+                    href="tel:0563214888"
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 text-[11px] font-mono hover:bg-emerald-500/30 transition-colors"
+                  >
+                    <span>📞 05 63 21 48 88</span>
+                  </a>
+                  <a
+                    href="tel:0796683288"
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 text-[11px] font-mono hover:bg-emerald-500/30 transition-colors"
+                  >
+                    <span>📞 07 96 68 32 88</span>
+                  </a>
+                </div>
               </div>
 
             </div>
@@ -348,19 +371,29 @@ export const RndTimizartOfferSection: React.FC<RndTimizartOfferSectionProps> = (
                   </h4>
                   <p className="text-xs text-slate-300 max-w-md mx-auto">
                     {currentLang === 'ar'
-                      ? `شكراً أخي ${militantName || 'المناضل'}. تم تسجيل طلبك بخصوص العرض الخاص ببلدية تيميزار (كود: ${promoCode}). سيتواصل معك الأخ ريان وعراب مباشرة.`
-                      : `Merci camarade ${militantName || ''}. Votre demande a été enregistrée. Rayan Ouarab prendra contact avec vous très vite.`}
+                      ? `شكراً أخي ${militantName || 'المناضل'}. تم تسجيل طلبك من قرية (${selectedVillage}) بخصوص العرض الخاص ببلدية تيميزار (كود: ${promoCode}). يمكنك تأكيد الإرسال فوراً عبر واتساب.`
+                      : `Merci camarade ${militantName || ''} de (${selectedVillage}). Votre demande a été enregistrée. Vous pouvez confirmer sur WhatsApp.`}
                   </p>
                   
                   <div className="pt-2 flex flex-wrap justify-center gap-3">
                     <a
-                      href={`https://wa.me/?text=${whatsappText}`}
+                      href={whatsappUrlPrimary}
                       target="_blank"
                       rel="noreferrer"
                       className="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs flex items-center gap-2 shadow-lg shadow-emerald-500/20"
                     >
                       <MessageCircle className="w-4 h-4" />
-                      <span>{currentLang === 'ar' ? 'تأكيد عبر واتساب الآن' : 'Confirmer sur WhatsApp'}</span>
+                      <span>{currentLang === 'ar' ? 'تأكيد عبر واتساب (0563214888)' : 'WhatsApp (0563214888)'}</span>
+                    </a>
+
+                    <a
+                      href={whatsappUrlSecondary}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-emerald-300 font-bold text-xs flex items-center gap-2 border border-emerald-500/30"
+                    >
+                      <MessageCircle className="w-4 h-4 text-emerald-400" />
+                      <span>{currentLang === 'ar' ? 'واتساب الثاني (0796683288)' : 'WhatsApp (0796683288)'}</span>
                     </a>
 
                     <button
@@ -406,33 +439,55 @@ export const RndTimizartOfferSection: React.FC<RndTimizartOfferSectionProps> = (
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
                       <label className="text-xs font-semibold text-slate-300">
-                        {currentLang === 'ar' ? 'رقم بطاقة المناضل أو قرية بلدية تيميزار' : 'Village / N° Carte Militant'}
+                        {currentLang === 'ar' ? 'قرية أو مدشر بلدية تيميزار' : 'Village de la commune de Timizart'} *
+                      </label>
+                      <select
+                        value={selectedVillage}
+                        onChange={(e) => setSelectedVillage(e.target.value)}
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/70 border border-white/10 text-slate-100 text-xs focus:outline-none focus:border-emerald-400 transition-colors"
+                      >
+                        <option value="Abizar">{currentLang === 'ar' ? 'قرية أبيزار (Abizar)' : 'Village Abizar'}</option>
+                        <option value="Boushel">{currentLang === 'ar' ? 'قرية بوشل (Boushel)' : 'Village Boushel'}</option>
+                        <option value="Timizart Centre">{currentLang === 'ar' ? 'تيميزار مركز (Timizart Centre)' : 'Timizart Centre'}</option>
+                        <option value="Tirourda">{currentLang === 'ar' ? 'قرية تيرورت (Tirourth / Tirourda)' : 'Village Tirourda'}</option>
+                        <option value="Ighil Bouchen">{currentLang === 'ar' ? 'قرية إغيل بوشن (Ighil Bouchen)' : 'Village Ighil Bouchen'}</option>
+                        <option value="Boughardane">{currentLang === 'ar' ? 'قرية بوغردان (Boughardane)' : 'Village Boughardane'}</option>
+                        <option value="Tikridja">{currentLang === 'ar' ? 'قرية تيكريجة (Tikridja)' : 'Village Tikridja'}</option>
+                        <option value="Afer">{currentLang === 'ar' ? 'قرية أفير (Afer)' : 'Village Afer'}</option>
+                        <option value="Ifarhounene">{currentLang === 'ar' ? 'قرية إفرحونان (Ifarhounene)' : 'Village Ifarhounene'}</option>
+                        <option value="Autre Village">{currentLang === 'ar' ? 'قرية أخرى تابعة لبلدية تيميزار' : 'Autre village de Timizart'}</option>
+                      </select>
+                    </div>
+
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-slate-300">
+                        {currentLang === 'ar' ? 'رقم بطاقة المناضل أو الصفة الحزبية' : 'N° Carte Militant ou Qualité'}
                       </label>
                       <input
                         type="text"
                         value={militantCard}
                         onChange={(e) => setMilitantCard(e.target.value)}
-                        placeholder={currentLang === 'ar' ? 'مثال: قرية أبراغ، إبيداشن، أو رقم البطاقة' : 'Ex: Abizar, Boushel, etc.'}
+                        placeholder={currentLang === 'ar' ? 'مثال: مناضل RND / رقم البطاقة' : 'Ex: Carte N° / Militant RND'}
                         className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/70 border border-white/10 text-slate-100 placeholder-slate-500 text-xs focus:outline-none focus:border-emerald-400 transition-colors"
                       />
                     </div>
+                  </div>
 
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-semibold text-slate-300">
-                        {currentLang === 'ar' ? 'نوع الخدمة المطلوبة' : 'Service souhaité'}
-                      </label>
-                      <select
-                        value={serviceType}
-                        onChange={(e) => setServiceType(e.target.value)}
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/70 border border-white/10 text-slate-100 text-xs focus:outline-none focus:border-emerald-400 transition-colors"
-                      >
-                        <option value="tech-consulting">{currentLang === 'ar' ? 'استشارة تقنية وتوجيه لمشروع (مجاناً)' : 'Conseil & Audit de Projet (Gratuit)'}</option>
-                        <option value="app-web">{currentLang === 'ar' ? 'تطوير موقع أو تطبيق بخصم 70%' : 'Création Web / Application (-70%)'}</option>
-                        <option value="association">{currentLang === 'ar' ? 'مبادرة جمعوية أو نشاط شبابي ببلدية تيميزار' : 'Projet associatif / jeunesse Timizart'}</option>
-                        <option value="multimedia">{currentLang === 'ar' ? 'تصميم فيديو أو موسيقى أو جرافيك 3D' : 'Production Vidéo / 3D / Audio'}</option>
-                        <option value="other">{currentLang === 'ar' ? 'أخرى (شرح في الملاحظات)' : 'Autre besoin'}</option>
-                      </select>
-                    </div>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-semibold text-slate-300">
+                      {currentLang === 'ar' ? 'نوع الخدمة أو المشروع المطلوب' : 'Service ou projet souhaité'}
+                    </label>
+                    <select
+                      value={serviceType}
+                      onChange={(e) => setServiceType(e.target.value)}
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/70 border border-white/10 text-slate-100 text-xs focus:outline-none focus:border-emerald-400 transition-colors"
+                    >
+                      <option value="tech-consulting">{currentLang === 'ar' ? 'استشارة تقنية وتوجيه لمشروع (مجاناً 100%)' : 'Conseil & Audit de Projet (Gratuit 100%)'}</option>
+                      <option value="app-web">{currentLang === 'ar' ? 'تطوير موقع أو تطبيق بخصم 70%' : 'Création Web / Application (-70%)'}</option>
+                      <option value="association">{currentLang === 'ar' ? 'مبادرة جمعوية أو نشاط شبابي ببلدية تيميزار (مجاناً)' : 'Projet associatif / jeunesse Timizart'}</option>
+                      <option value="multimedia">{currentLang === 'ar' ? 'تصميم فيديو أو موسيقى أو جرافيك 3D' : 'Production Vidéo / 3D / Audio'}</option>
+                      <option value="other">{currentLang === 'ar' ? 'أخرى (شرح في الملاحظات)' : 'Autre besoin'}</option>
+                    </select>
                   </div>
 
                   <div className="space-y-1.5">
@@ -458,13 +513,23 @@ export const RndTimizartOfferSection: React.FC<RndTimizartOfferSectionProps> = (
                     </button>
 
                     <a
-                      href={`https://wa.me/?text=${whatsappText}`}
+                      href={whatsappUrlPrimary}
                       target="_blank"
                       rel="noreferrer"
-                      className="w-full sm:w-auto px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-emerald-500/30 text-emerald-300 font-semibold text-xs flex items-center justify-center gap-2 transition-colors"
+                      className="w-full sm:w-auto px-4 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-emerald-500/30 text-emerald-300 font-semibold text-xs flex items-center justify-center gap-2 transition-colors"
                     >
                       <MessageCircle className="w-4 h-4 text-emerald-400" />
-                      <span>{currentLang === 'ar' ? 'مراسلة ريان وعراب مباشرة عبر واتساب' : 'WhatsApp Direct avec Rayan'}</span>
+                      <span>{currentLang === 'ar' ? 'واتساب 1: 0563214888' : 'WhatsApp 1: 0563214888'}</span>
+                    </a>
+
+                    <a
+                      href={whatsappUrlSecondary}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="w-full sm:w-auto px-4 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-emerald-500/30 text-emerald-300 font-semibold text-xs flex items-center justify-center gap-2 transition-colors"
+                    >
+                      <MessageCircle className="w-4 h-4 text-emerald-400" />
+                      <span>{currentLang === 'ar' ? 'واتساب 2: 0796683288' : 'WhatsApp 2: 0796683288'}</span>
                     </a>
                   </div>
                 </form>

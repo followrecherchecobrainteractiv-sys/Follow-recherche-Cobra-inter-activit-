@@ -26,10 +26,10 @@ import {
 } from 'lucide-react';
 
 import anniversaryBannerImg from '../assets/images/rayan_ouarab_anniversary_banner_1785628196230.jpg';
-import rdrWesternStudioImg from '../assets/images/rayan_ouarab_anniversary_banner_1785628196230.jpg';
-import rayanGameStudioImg from '../assets/images/rayan_ouarab_anniversary_banner_1785628196230.jpg';
-import rayanMusicLabImg from '../assets/images/rayan_ouarab_anniversary_banner_1785628196230.jpg';
-import rayanCinemaDirectorImg from '../assets/images/rayan_ouarab_anniversary_banner_1785628196230.jpg';
+import rdrWesternStudioImg from '../assets/images/cobra_rdr_western_epic_studio_1785628209973.jpg';
+import rayanGameStudioImg from '../assets/images/rayan_ouarab_game_studio_1785628717917.jpg';
+import rayanMusicLabImg from '../assets/images/rayan_ouarab_music_lab_1785628732423.jpg';
+import rayanCinemaDirectorImg from '../assets/images/rayan_ouarab_cinema_director_1785628746722.jpg';
 
 interface AnniversaryPromoVideoSectionProps {
   currentLang: Language;

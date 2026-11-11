@@ -65,44 +65,122 @@ export const AiConsultantSection: React.FC<AiConsultantSectionProps> = ({
 
   const fallbackSimulation = () => {
     setTimeout(() => {
-      setProposal({
-        title: `Projet Cobra Custom: ${prompt.slice(0, 30)}...`,
-        tagline: "Architecture Réseau, Moteur Graphique 3D & Spatial Audio",
-        executiveSummary: `Follow Recherche Cobra Inter Activité a conçu une proposition sur-mesure combinant ${selectedPillars.join(', ')}. Notre équipe intégrera le Cobra AI Engine pour garantir une expérience utilisateur immersive et une scalabilité optimale.`,
-        pillarsInvolved: selectedPillars,
-        technicalArchitecture: [
-          "Moteur Unreal Engine 5 / C++20 avec système Nanite",
-          "Microservices Cloud Python & Modèle LLM Gemini",
-          "Audio FMOD / Wwise avec composition orchestrale originale 24-bit",
-          "Rendu 3D Octane / Blender pour cinématiques 4K"
-        ],
-        creativeHighlights: [
-          "Graphismes 3D photoréalistes avec rendu volumétrique",
-          "Algorithmes d'IA adaptatifs pour la prise de décision",
-          "Bande-son dynamique réagissant aux actions de l'utilisateur",
-          "Bande-annonce cinématographique de lancement"
-        ],
-        musicSoundConcept: "Ambiance sonore hybride (symphonique et électronique sombre) avec motifs de percussions épiques.",
-        estimatedTimeline: "6 à 10 Semaines (3 Phases)",
-        recommendedPhasePlan: [
-          {
-            phase: "Phase 1: Architecture & Prototype IA",
-            duration: "2 Semaines",
-            details: "Validation du cahier des charges, modélisation 3D initiale et intégration du noyau d'IA."
-          },
-          {
-            phase: "Phase 2: Développement Jeux, Sound Design & Code",
-            duration: "4 Semaines",
-            details: "Production des assets 3D, composition musicale studio et programmation des systèmes."
-          },
-          {
-            phase: "Phase 3: Montage Cinématique, Post-Production & Livrables",
-            duration: "2 Semaines",
-            details: "Mixage son Dolby Atmos, rendu vidéo 8K et déploiement final."
-          }
-        ]
-      });
-    }, 1200);
+      if (currentLang === 'ar') {
+        setProposal({
+          title: `مشروع كوبرا المخصص: ${prompt.slice(0, 30)}...`,
+          tagline: "معمارية برمجية متقدمة، محرك رسومات 3D وهندسة صوتية تفاعلية",
+          executiveSummary: `صممت استوديوهات Follow Recherche Cobra Inter Activité مقترحاً متكاملاً يجمع بين الميادين المحددة (${selectedPillars.join(', ')}). سيقوم فريقنا بإدماج خوارزميات الذكاء الاصطناعي وتقنيات محركات الألعاب لضمان تجربة مستخدم فريدة وقابلة للتوسع.`,
+          pillarsInvolved: selectedPillars,
+          technicalArchitecture: [
+            "محرك Unreal Engine 5 / C++20 مع نظام Nanite للإضاءة والفيزياء",
+            "بنية خدمات سحابية متقدمة ونماذج ذكاء اصطناعي مخصصة",
+            "هندسة صوتية FMOD / Wwise مع تأليف موسيقي أوركسترالي أصيل",
+            "تصيير سينمائي ثلاثي الأبعاد بدقة فائقة 4K عبر Blender & Octane"
+          ],
+          creativeHighlights: [
+            "رسومات 3D واقعية مع مؤثرات ضوئية وحجمية سينمائية",
+            "خوارزميات ذكاء اصطناعي تكيفية لاتخاذ القرار",
+            "موسيقى تصويرية ديناميكية تتفاعل مع مجريات التجربة",
+            "عرض ترويجي سينمائي لإطلاق المشروع"
+          ],
+          musicSoundConcept: "أجواء صوتية تجمع بين الطابع الأوركسترا المهيب والإلكتروني الحديث مع إيقاعات تفاعلية.",
+          estimatedTimeline: "6 إلى 10 أسابيع (3 مراحل)",
+          recommendedPhasePlan: [
+            {
+              phase: "المرحلة 1: المعمارية ونموذج الذكاء الاصطناعي الأولي",
+              duration: "أسبوعان",
+              details: "تحديد المواصفات التقنية، النمذجة ثلاثية الأبعاد الأولية، ودمج نواة الذكاء الاصطناعي."
+            },
+            {
+              phase: "المرحلة 2: التطوير البرمجي، هندسة الصوت والألعاب",
+              duration: "4 أسابيع",
+              details: "إنتاج الأصول الرقمية، تأليف الموسيقى في الاستوديو، وبرمجة الأنظمة المتكاملة."
+            },
+            {
+              phase: "المرحلة 3: المونتاج السينمائي والتسليم النهائي",
+              duration: "أسبوعان",
+              details: "مكساج الصوت بتقنية Dolby Atmos، إخراج الفيديو بدقة 8K، والتسليم الشامل."
+            }
+          ]
+        });
+      } else if (currentLang === 'en') {
+        setProposal({
+          title: `Cobra Custom Blueprint: ${prompt.slice(0, 30)}...`,
+          tagline: "Full-Stack Architecture, 3D Engine & Spatial Audio Systems",
+          executiveSummary: `Follow Recherche Cobra Inter Activité designed a custom blueprint combining ${selectedPillars.join(', ')}. Our team will integrate Cobra AI Engine to ensure supreme immersion and performance scalability.`,
+          pillarsInvolved: selectedPillars,
+          technicalArchitecture: [
+            "Unreal Engine 5 / C++20 with Nanite & Lumen geometry",
+            "Scalable Cloud Microservices & Gemini LLM Engine",
+            "FMOD / Wwise Audio with 24-bit studio orchestral composition",
+            "Octane & Blender 3D render pipeline for 4K cinematics"
+          ],
+          creativeHighlights: [
+            "Photorealistic 3D graphics with volumetric light rendering",
+            "Adaptive AI behavior models for dynamic decision making",
+            "Interactive reactive soundtrack adapting to user actions",
+            "High-impact launch cinematic trailer"
+          ],
+          musicSoundConcept: "Hybrid orchestral & electronic dark synth with heavy cinematic percussion.",
+          estimatedTimeline: "6 to 10 Weeks (3 Phases)",
+          recommendedPhasePlan: [
+            {
+              phase: "Phase 1: Architecture & AI Prototype",
+              duration: "2 Weeks",
+              details: "Technical specs, initial 3D blockout, and AI core integration."
+            },
+            {
+              phase: "Phase 2: Game Dev, Sound Design & Code",
+              duration: "4 Weeks",
+              details: "3D asset generation, studio scoring, and interactive mechanics."
+            },
+            {
+              phase: "Phase 3: Cinematic Polish & Deployment",
+              duration: "2 Weeks",
+              details: "Spatial Dolby Atmos mastering, 8K trailer rendering, and final deliverable package."
+            }
+          ]
+        });
+      } else {
+        setProposal({
+          title: `Projet Cobra Custom: ${prompt.slice(0, 30)}...`,
+          tagline: "Architecture Réseau, Moteur Graphique 3D & Spatial Audio",
+          executiveSummary: `Follow Recherche Cobra Inter Activité a conçu une proposition sur-mesure combinant ${selectedPillars.join(', ')}. Notre équipe intégrera le Cobra AI Engine pour garantir une expérience utilisateur immersive et une scalabilité optimale.`,
+          pillarsInvolved: selectedPillars,
+          technicalArchitecture: [
+            "Moteur Unreal Engine 5 / C++20 avec système Nanite",
+            "Microservices Cloud Python & Modèle LLM Gemini",
+            "Audio FMOD / Wwise avec composition orchestrale originale 24-bit",
+            "Rendu 3D Octane / Blender pour cinématiques 4K"
+          ],
+          creativeHighlights: [
+            "Graphismes 3D photoréalistes avec rendu volumétrique",
+            "Algorithmes d'IA adaptatifs pour la prise de décision",
+            "Bande-son dynamique réagissant aux actions de l'utilisateur",
+            "Bande-annonce cinématographique de lancement"
+          ],
+          musicSoundConcept: "Ambiance sonore hybride (symphonique et électronique sombre) avec motifs de percussions épiques.",
+          estimatedTimeline: "6 à 10 Semaines (3 Phases)",
+          recommendedPhasePlan: [
+            {
+              phase: "Phase 1: Architecture & Prototype IA",
+              duration: "2 Semaines",
+              details: "Validation du cahier des charges, modélisation 3D initiale et intégration du noyau d'IA."
+            },
+            {
+              phase: "Phase 2: Développement Jeux, Sound Design & Code",
+              duration: "4 Semaines",
+              details: "Production des assets 3D, composition musicale studio et programmation des systèmes."
+            },
+            {
+              phase: "Phase 3: Montage Cinématique, Post-Production & Livrables",
+              duration: "2 Semaines",
+              details: "Mixage son Dolby Atmos, rendu vidéo 8K et déploiement final."
+            }
+          ]
+        });
+      }
+    }, 1000);
   };
 
   return (
