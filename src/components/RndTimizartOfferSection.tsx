@@ -140,6 +140,8 @@ export const RndTimizartOfferSection: React.FC<RndTimizartOfferSectionProps> = (
                 <img 
                   src={photoUrl} 
                   alt="Ouarab Rayane - مناضل في حزب التجمع الوطني الديمقراطي RND - 1 نوفمبر" 
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-auto object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
                 />
                 
